@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الصفحة الرئيسية - شركة أرض الخبرات للاتصالات وتقنية المعلومات</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* التصميم العام */
+        body {
+            font-family: 'Tajawal', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        a {
+            text-decoration: none;
+            color: #2980b9;
+        }
+        a:hover {
+            color: #3498db;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2980b9;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .btn:hover {
+            background-color: #3498db;
+            transform: translateY(-3px);
+        }
+
+        /* القسم العلوي (Header) */
+        header {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            height: 50px; /* ارتفاع الشعار */
+        }
+        .nav-links {
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-links li {
+            position: relative;
+        }
+        .nav-links a {
+            color: #fff;
+            padding: 10px 15px;
+            display: block;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #3498db;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #2c3e50;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            padding: 12px 16px;
+            text-align: right;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* تصميم متجاوب للأجهزة المحمولة */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background-color: #2c3e50;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 100%;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+        }
+
+        /* القسم الأول: مقدمة جذابة (Hero Section) */
+        .hero {
+            background: url('https://via.placeholder.com/1200x400') no-repeat center center/cover;
+            color: #fff;
+            padding: 150px 0;
+            text-align: center;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* قسم المنتجات الأكثر مبيعًا */
+        .featured-products {
+            padding: 50px 0;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        .featured-products h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .product {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        .product:hover {
+            transform: translateY(-5px);
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .product h3 {
+            font-size: 20px;
+            margin: 15px 0 10px;
+            color: #2c3e50;
+        }
+        .product p {
+            font-size: 14px;
+            color: #666;
+        }
+        .product .btn {
+            margin-top: 10px;
+        }
+
+        /* قسم قصة الشركة */
+        .about-company {
+            padding: 50px 0;
+            background-color: #fff;
+            text-align: right;
+        }
+        .about-company h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: right;
+        }
+        .about-content p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .about-content ul {
+            list-style-type: disc;
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+        .about-content ul li {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .about-content h3 {
+            font-size: 24px;
+            margin: 20px 0 10px;
+            color: #2c3e50;
+        }
+
+        /* التذييل (Footer) */
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- القسم العلوي (Header) -->
+    <header>
+        <div class="container">
+            <nav>
+                <img src="images/logo.png" alt="شعار الشركة" class="logo">
+                <div class="hamburger" onclick="toggleMenu()">☰</div>
+                <ul class="nav-links">
+                    <li><a href="#">الرئيسية</a></li>
+                    <li><a href="#">من نحن</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">المنتجات</a>
+                        <div class="dropdown-content">
+                            <a href="#">منتج 1</a>
+                            <a href="#">منتج 2</a>
+                            <a href="#">منتج 3</a>
+                        </div>
+                    </li>
+                    <li><a href="#">اتصل بنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- القسم الأول: مقدمة جذابة (Hero Section) -->
+    <section class="hero">
+        <div class="container">
+            <h1>مرحبًا بكم في شركة أرض الخبرات للاتصالات وتقنية المعلومات</h1>
+            <p>نقدم لكم أفضل الحلول التكنولوجية والخدمات المتكاملة.</p>
+            <a href="#" class="btn">تصفح المنتجات</a>
+        </div>
+    </section>
+
+    <!-- قسم المنتجات الأكثر مبيعًا -->
+    <section class="featured-products">
+        <div class="container">
+            <h2>المنتجات الأكثر مبيعًا</h2>
+            <div class="products-grid">
+                <!-- المنتج 1 -->
+                <div class="product">
+                    <img src="https://via.placeholder.com/200x150" alt="منتج 1">
+                    <h3>أنظمة الفيديو والصوت المتطورة</h3>
+                    <p>حلول متكاملة لأنظمة الفيديو والصوت عالية الجودة.</p>
+                    <a href="#" class="btn">تفاصيل أكثر</a>
+                </div>
+                <!-- المنتج 2 -->
+                <div class="product">
+                    <img src="https://via.placeholder.com/200x150" alt="منتج 2">
+                    <h3>كاميرات المراقبة الذكية</h3>
+                    <p>أنظمة مراقبة ذكية بتقنيات حديثة لأمان مثالي.</p>
+                    <a href="#" class="btn">تفاصيل أكثر</a>
+                </div>
+                <!-- المنتج 3 -->
+                <div class="product">
+                    <img src="https://via.placeholder.com/200x150" alt="منتج 3">
+                    <h3>تجهيز الاستديوهات</h3>
+                    <p>تصميم وتجهيز الاستديوهات بأحدث التقنيات.</p>
+                    <a href="#" class="btn">تفاصيل أكثر</a>
+                </div>
+                <!-- المنتج 4 -->
+                <div class="product">
+                    <img src="https://via.placeholder.com/200x150" alt="منتج 4">
+                    <h3>أنظمة الإضاءة المتخصصة</h3>
+                    <p>حلول إضاءة متخصصة للمسارح والقاعات.</p>
+                    <a href="#" class="btn">تفاصيل أكثر</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم قصة الشركة -->
+    <section class="about-company">
+        <div class="container">
+            <h2>قصة الشركة</h2>
+            <div class="about-content">
+                <p>
+                    شركة "أرض الخبرات للاتصالات وتقنية المعلومات" هي شركة رائدة متخصصة في تقديم حلول متكاملة في مجالات الاتصالات وتكنولوجيا المعلومات. تأسست بهدف تلبية الاحتياجات التقنية المتطورة للشركات والمؤسسات والأفراد، من خلال تقديم خدمات عالية الجودة تشمل تصميم وتركيب وتشغيل الأنظمة التكنولوجية الحديثة.
+                </p>
+                <p>
+                    تعمل الشركة على توفير حلول مبتكرة تشمل:
+                </p>
+                <ul>
+                    <li>أنظمة الفيديو والصوت المتطورة.</li>
+                    <li>كاميرات المراقبة الذكية.</li>
+                    <li>تجهيز الاستديوهات وغرف الاجتماعات بأحدث التقنيات.</li>
+                    <li>توريد وتركيب شاشات العرض وأنظمة الإضاءة المتخصصة.</li>
+                    <li>تصميم وتنفيذ أنظمة الشبكات وأنظمة الحضور والانصراف.</li>
+                    <li>تجهيز المسارح والقاعات بأنظمة صوت وإضاءة متكاملة.</li>
+                </ul>
+                <p>
+                    تتميز الشركة بفريق عمل محترف وذو خبرة عالية، يعمل على تقديم حلول مخصصة تلبي احتياجات العملاء بكفاءة وجودة عالية. كما تسعى الشركة دائمًا إلى مواكبة أحدث التطورات التكنولوجية لتقديم أفضل الخدمات التي تسهم في تطوير عملائها وتمكينهم من تحقيق أهدافهم.
+                </p>
+                <h3>رؤيتنا</h3>
+                <p>أن نكون الخيار الأول في تقديم حلول الاتصالات وتكنولوجيا المعلومات التي تسهم في بناء مجتمع رقمي متطور.</p>
+                <h3>رسالتنا</h3>
+                <p>تقديم حلول تقنية مبتكرة وعالية الجودة لتعزيز كفاءة العملاء وتمكينهم من تحقيق النجاح في أعمالهم.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- التذييل (Footer) -->
+    <footer>
+        <div class="container">
+            <p>© 2023 شركة أرض الخبرات للاتصالات وتقنية المعلومات. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script>
+        // تغيير لون Navbar عند التمرير
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = '#34495e'; // لون مختلف عند التمرير
+            } else {
+                header.style.backgroundColor = '#2c3e50'; // اللون الأصلي
+            }
+        });
+
+        // تفعيل القائمة المنسدلة على الأجهزة المحمولة
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
